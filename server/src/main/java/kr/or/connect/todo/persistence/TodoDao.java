@@ -34,11 +34,6 @@ public class TodoDao {
 				.usingColumns("TODO")
 				.usingGeneratedKeyColumns("id");
 	}
-	//	COUNT
-	public int countTodo() {
-		Map<String, Object> params = Collections.emptyMap();
-		return jdbc.queryForObject(COUNT_UNCOMPLETED_TODO, params, Integer.class);
-	}
 	
 	//	SELECT_ALL
 	public List<Todo> selectAll() {
@@ -54,12 +49,6 @@ public class TodoDao {
 		return jdbc.queryForObject(SELECT_BY_ID, params, rowMapper);	
 	}
 	
-	//	SELECT_BY_COMPLETED
-	public List<Todo> selectByCompleted(boolean completed) {
-		Map<String, Object> params = new HashMap<>();
-		params.put("completed", completed);
-		return jdbc.query(SELECT_BY_COMPLETED, params, rowMapper);	
-	}	
 	
 	//	INSERT
 	public Integer insert(Todo todo) {

@@ -24,8 +24,7 @@ public class TodoController {
 
 	private final TodoService todoService;
 	
-	//for Filtering
-	private static final int ALL=1;
+
 	
 	@Autowired
 	public TodoController(TodoService todoService) {
@@ -34,13 +33,10 @@ public class TodoController {
 	
 	@GetMapping
 	Collection<Todo> readList() {
-		return todoService.findAll(ALL);
+		return todoService.findAll();
 	}
 
-	@GetMapping("/{completed}")
-	Collection<Todo> read(@PathVariable  Integer completed) {
-		return todoService.findAll(completed);
-	}
+
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)

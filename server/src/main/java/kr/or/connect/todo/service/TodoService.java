@@ -11,7 +11,7 @@ import kr.or.connect.todo.persistence.TodoDao;
 public class TodoService {
 
 	private TodoDao dao;
-	private final int ALL=1,COMPLETED=2,UNCOMPLETED=3;
+
  
 
 	public TodoService(TodoDao dao) {
@@ -23,15 +23,9 @@ public class TodoService {
 		 return dao.selectById(id);
 	}
 	
-	public Collection<Todo> findAll(int filter) {
+	public Collection<Todo> findAll() {
 		
-		if(filter==ALL)
 			return dao.selectAll();
-		else if(filter==COMPLETED)
-			return dao.selectByCompleted(true);
-		else if(filter==UNCOMPLETED)
-			return dao.selectByCompleted(false);
-		else return null;
 	}
 	public boolean update(Todo todo) {
 		int count = dao.update(todo);
