@@ -24,7 +24,7 @@ public class TodoDaoTest {
 	private TodoDao dao;
 
 
-
+ 
 	@Test
 	public void shouldInsertAndSelect() {
 		// given
