@@ -23,26 +23,7 @@ public class TodoDaoTest {
 	@Autowired
 	private TodoDao dao;
 
-	@Test
-	public void shouldCount() {
-		// given
-		//uncompleted 2, completed 1
-		Todo todo = new Todo("textTodo1");
-		 dao.insert(todo);
-		todo = new Todo("textTodo2");
-		 todo.setId(dao.insert(todo));
-		 todo.setCompleted(true);
-		 dao.update(todo);
-		todo = new Todo("textTodo3");
-		 dao.insert(todo);
-		
-		 //when
-		 int count = dao.countTodo();
-		
-		 //then
-		 //uncompleted todo is two
-		 assertThat(count,is(2));
-	}
+
 
 	@Test
 	public void shouldInsertAndSelect() {
@@ -94,23 +75,6 @@ public class TodoDaoTest {
 		assertThat(todoList.get(1).getDate(),is(todo1.getDate()));
 	}
 
-	@Test
-	public void shouldSelectBYCompleted() {
-		
-		//given
-		Todo todo = new Todo("textTodo1");
-		int id = dao.insert(todo);
-		todo = dao.selectById(id);
-		todo.setCompleted(true);
-		dao.update(todo);
-		//when
-		List<Todo> todoList= dao.selectByCompleted(true);
-		List<Todo> todoList1= dao.selectByCompleted(false);
-		
-		//then
-		assertThat(todoList.size(),is(1));
-		assertThat(todoList1.size(),is(0));
-		
-	}
+
 }
 
