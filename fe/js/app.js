@@ -175,6 +175,16 @@ $(document).ready(function(){
 				});
 
 			}
+
+
+			$(".clear-completed").on("click",function() {
+				$(".todo-list").children().each(function(index) {
+						if($(this).hasClass("completed")) {
+							deleteNode(this);
+						}
+				});
+		});
+
 	// Your starting point. Enjoy the ride!
 });
 })(window);
